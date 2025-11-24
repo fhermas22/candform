@@ -28,12 +28,12 @@
                 <div class="w-full max-w-md p-6 bg-white shadow-lg rounded-xl dark:bg-slate-800">
                     <h3 class="text-lg font-semibold text-slate-800 dark:text-white">Aperçu du formulaire</h3>
                     <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-                        Capturez les informations essentielles : identité, contact, CV et message de motivation. Une notification et un e‑mail sont envoyés automatiquement après soumission.
+                        Capturez les informations essentielles : identité, contact et CV . Une notification et un e‑mail sont envoyés automatiquement après soumission.
                     </p>
 
                     <ul id="features" class="mt-4 space-y-3 text-sm text-slate-600 dark:text-slate-300">
                         <li>✓ Confirmation visuelle immédiate</li>
-                        <li>✓ Email de récapitulatif</li>
+                        <li>✓ Email de confirmation</li>
                         <li>✓ Stockage sécurisé des données</li>
                     </ul>
 

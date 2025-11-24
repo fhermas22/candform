@@ -24,7 +24,7 @@
             </div>
           @endif
 
-          <form id="candidatureForm" action="{{ url('/candidature') }}" method="POST" enctype="multipart/form-data" class="mt-6 space-y-6">
+          <form id="candidature-form" action="/form" method="POST" enctype="multipart/form-data" class="mt-6 space-y-6">
             @csrf
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -54,6 +54,7 @@
               <select name="poste" id="poste" required class="mt-1 block w-full rounded-md border border-slate-200 bg-white dark:bg-slate-700 px-3 py-2 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-rose-500">
                 <option value="">Sélectionnez un poste</option>
                 <option value="developpeur_web" {{ old('poste')=='developpeur_web' ? 'selected' : '' }}>Développeur Web</option>
+                <option value="developpeur_mobile" {{ old('poste')=='developpeur_mobile' ? 'selected' : '' }}>Développeur Mobile</option>
                 <option value="data_scientist" {{ old('poste')=='data_scientist' ? 'selected' : '' }}>Data Scientist</option>
                 <option value="product_manager" {{ old('poste')=='product_manager' ? 'selected' : '' }}>Product Manager</option>
                 <option value="designer" {{ old('poste')=='designer' ? 'selected' : '' }}>Designer</option>
@@ -85,7 +86,7 @@
       (function () {
         const cvInput = document.getElementById('cv');
         const cvError = document.getElementById('cvError');
-        const form = document.getElementById('candidatureForm');
+        const form = document.getElementById('candidature-form');
 
         function formatBytes(bytes) {
           if (bytes === 0) return '0 Bytes';
