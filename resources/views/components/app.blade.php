@@ -31,6 +31,8 @@
 
         {{ $slot }}
 
+        <x-alert-success />
+
         <footer class="max-w-6xl mx-auto px-6 py-6 text-sm text-slate-500 dark:text-slate-400">
             © {{ date('Y') }} {{ config('app.name', 'CandForm') }} — Tous droits réservés.
         </footer>
