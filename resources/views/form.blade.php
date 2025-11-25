@@ -29,13 +29,13 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label for="nom" class="block text-sm font-medium text-slate-700 dark:text-slate-200">Nom</label>
-                <input required type="text" name="nom" id="nom" value="{{ old('nom') }}" class="mt-1 block w-full rounded-md border border-slate-200 bg-white dark:bg-slate-700 px-3 py-2 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-rose-500" />
+                <label for="last_name" class="block text-sm font-medium text-slate-700 dark:text-slate-200">Nom</label>
+                <input required type="text" name="last_name" id="last_name" value="{{ old('last_name') }}" class="mt-1 block w-full rounded-md border border-slate-200 bg-white dark:bg-slate-700 px-3 py-2 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-rose-500" />
               </div>
 
               <div>
-                <label for="prenom" class="block text-sm font-medium text-slate-700 dark:text-slate-200">Prénom</label>
-                <input required type="text" name="prenom" id="prenom" value="{{ old('prenom') }}" class="mt-1 block w-full rounded-md border border-slate-200 bg-white dark:bg-slate-700 px-3 py-2 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-rose-500" />
+                <label for="first_name" class="block text-sm font-medium text-slate-700 dark:text-slate-200">Prénom</label>
+                <input required type="text" name="first_name" id="first_name" value="{{ old('first_name') }}" class="mt-1 block w-full rounded-md border border-slate-200 bg-white dark:bg-slate-700 px-3 py-2 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-rose-500" />
               </div>
             </div>
 
@@ -45,8 +45,8 @@
             </div>
 
             <div>
-              <label for="adresse" class="block text-sm font-medium text-slate-700 dark:text-slate-200">Adresse</label>
-              <textarea name="adresse" id="adresse" rows="3" class="mt-1 block w-full rounded-md border border-slate-200 bg-white dark:bg-slate-700 px-3 py-2 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-rose-500">{{ old('adresse') }}</textarea>
+              <label for="address" class="block text-sm font-medium text-slate-700 dark:text-slate-200">Adresse</label>
+              <textarea name="address" id="address" rows="3" class="mt-1 block w-full rounded-md border border-slate-200 bg-white dark:bg-slate-700 px-3 py-2 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-rose-500">{{ old('address') }}</textarea>
             </div>
 
             <div>
@@ -103,7 +103,7 @@
           const file = this.files[0];
           if (!file) return;
 
-          // Vérifier le type MIME (côté client)
+          // Verify the MIME type (client side)
           if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
             cvError.textContent = 'Le fichier doit être au format PDF.';
             cvError.classList.remove('hidden');
@@ -111,7 +111,7 @@
             return;
           }
 
-          // Vérifier la taille (10 MB)
+          // Verify the size (10 MB)
           const maxBytes = 10 * 1024 * 1024;
           if (file.size > maxBytes) {
             cvError.textContent = 'Fichier trop volumineux (' + formatBytes(file.size) + '). Taille maximale : 10 Mo.';
@@ -122,7 +122,7 @@
         });
 
         form.addEventListener('submit', function (e) {
-          // Dernière vérification avant envoi
+          // Last verification before sending
           const file = cvInput.files[0];
           if (!file) {
             e.preventDefault();
