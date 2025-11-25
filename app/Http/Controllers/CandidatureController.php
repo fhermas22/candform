@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ConfirmationCandidatureMail;
 use App\Models\Candidature;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class CandidatureController extends Controller
 {
@@ -12,6 +14,7 @@ class CandidatureController extends Controller
     }
 
     public function store(Request $request) {
+        // Validation errors messages
         $messages = [
             'last_name.required' => 'Merci de saisir votre nom.',
             'first_name.required' => 'Merci de saisir votre prénom.',
@@ -23,6 +26,7 @@ class CandidatureController extends Controller
             'cv.max' => 'Le CV ne doit pas dépasser 10 Mo.',
         ];
 
+        // Validation before sending
         $validated = $request->validate([
             'last_name' => 'required|string|max:255',
             'first_name' => 'required|string|max:255',
@@ -37,6 +41,7 @@ class CandidatureController extends Controller
             $cvPath = $request->file('cv')->store('cvs', 'public');
         }
 
+        // Store data in database
         Candidature::create([
             'last_name' => $validated['last_name'],
             'first_name' => $validated['first_name'],
@@ -45,6 +50,11 @@ class CandidatureController extends Controller
             'cv_path' => $cvPath,
         ]);
 
+        // Send a confirmation e-mail
+        Mail::to($validated['email'])
+        ->send(new ConfirmationCandidatureMail($validated['last_name'], $validated['first_name']));
+
+        // Redirect with notification
         return redirect('/')->with('success', 'Candidature soumise avec succès !');
     }
 }
